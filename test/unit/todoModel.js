@@ -25,7 +25,6 @@ describe('Todo', function() {
       };
 
       Todo.create(todoObj, function(err, todo) {
-        console.log('todo:', todo);
         expect(err).to.not.exist;
         expect(todo).to.exist;
         expect(todo.desc).to.equal(todoObj.desc);
@@ -46,10 +45,17 @@ describe('Todo', function() {
     });
   });
 
-  // describe('.get()', function() {
-
-  // });
-
+  describe('.get()', function() {
+    it('should retrieve the todo from the db.', function(cb) {
+      Todo.get(function(err, todos) {
+        expect(err).to.not.exist;
+        expect(todos).to.have.length(1);
+        expect(todos[0].desc).to.equal('Write tests');
+        cb();
+      });
+    });
+  });
+  
   // describe('.getOneById()', function() {
 
   // });

@@ -20,3 +20,5 @@ app.use('/', require('./routes/index'))
 app.listen(PORT, err => {
   console.log(err || `Server listening on port ${PORT}`);
 });
+
+module.exports = app;
